@@ -1,18 +1,9 @@
----
-imagesRawBaseUrl: https://raw.githubusercontent.com/MDat-Module/ImgHost/main/TomClancyGhostReconBreakpoint
-imagesFilenamePattern: {n}.jpg
-imagesStart: 1
-imagesEnd: 40
-imagesNumberPadding: 3
-images:
- - 001.jpg
-summary: Bắn súng taktical, thiên về phong cách chiến thuật và co-op, có lúc căng thẳng, có lúc kịch tính.
----
-
-Tom Clancy's Ghost Recon Breakpoint: Một shooter theo đội với nhiều tùy biến vũ khí và chiến thuật.
-
-Cảm nhận:
-- Trò chơi tập trung nhiều vào chiến thuật đội và phối hợp, phù hợp chơi co-op.
-- Một số nhiệm vụ và AI có thể hơi lặp lại, nhưng trải nghiệm chiến đấu vẫn hấp dẫn.
-- Hệ thống trang bị và tùy chỉnh vũ khí sâu, cho phép thử nghiệm nhiều phong cách chơi.
-
+{
+  "imagesRawBaseUrl": "https://raw.githubusercontent.com/MDat-Module/ImgHost/main/TomClancyGhostReconBreakpoint",
+  "imagesFilenamePattern": "{n}.jpg",
+  "imagesStart": 1,
+  "imagesEnd": 40,
+  "imagesNumberPadding": 3,
+  "summary": "Bắn súng taktical, thiên về phong cách chiến thuật và co-op, có lúc căng thẳng, có lúc kịch tính.",
+  "body": "Tom Clancy's Ghost Recon Breakpoint: Một shooter theo đội với nhiều tùy biến vũ khí và chiến thuật.\n\nCảm nhận:\n- Trò chơi tập trung nhiều vào chiến thuật đội và phối hợp, phù hợp chơi co-op.\n- Một số nhiệm vụ và AI có thể hơi lặp lại, nhưng trải nghiệm chiến đấu vẫn hấp dẫn.\n- Hệ thống trang bị và tùy chỉnh vũ khí sâu, cho phép thử nghiệm nhiều phong cách chơi."
+}

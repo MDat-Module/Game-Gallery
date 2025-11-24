@@ -1,18 +1,9 @@
----
-imagesRawBaseUrl: https://raw.githubusercontent.com/MDat-Module/ImgHost/main/WhereWindMeets
-imagesFilenamePattern: {n}.jpg
-imagesStart: 1
-imagesEnd: 40
-imagesNumberPadding: 3
-images:
- - 001.jpg
-summary: Một tựa game Wuxia thế giới mở, đấu kiếm, khám phá và hành hiệp trong bối cảnh Trung Quốc thế kỷ X.
----
-Where Winds Meet: Một tựa game Wuxia thế giới mở, người chơi nhập vai một kiếm khách trẻ trong thời Ngũ Đại Thập Quốc, khám phá vùng đất rộng lớn, đối mặt với bí ẩn và vận mệnh cá nhân.
-
-Cảm nhận (tóm tắt từ trang cửa hàng và trải nghiệm sơ bộ):
-- Thế giới mở quy mô lớn với hơn 20 vùng địa danh, thời tiết và thời gian động tạo nên nhiều khung cảnh đẹp để chụp ảnh.
-- Lối chơi Wuxia đa dạng: di chuyển trên nóc nhà, lướt không khí, sử dụng nhiều loại vũ khí (kiếm, thương, phi tiêu, cung, quạt, dù) và kỹ năng tuỳ chỉnh.
-- Hệ thống chiến đấu thiên về hành động/chiến thuật, có thể chơi đơn hoặc hợp tác tối đa 4 người; có cả hoạt động guild, PvP và dungeon co-op.
-- Nội dung phong phú nhưng đòi hỏi cấu hình tương đối cao (khuyến nghị SSD và GPU mạnh); hiện đánh giá cộng đồng là rất tích cực.
-
+{
+  "imagesRawBaseUrl": "https://raw.githubusercontent.com/MDat-Module/ImgHost/main/WhereWindMeets",
+  "imagesFilenamePattern": "{n}.jpg",
+  "imagesStart": 1,
+  "imagesEnd": 40,
+  "imagesNumberPadding": 3,
+  "summary": "Một tựa game Wuxia thế giới mở, đấu kiếm, khám phá và hành hiệp trong bối cảnh Trung Quốc thế kỷ X.",
+  "body": "Where Winds Meet: Một tựa game Wuxia thế giới mở, người chơi nhập vai một kiếm khách trẻ trong thời Ngũ Đại Thập Quốc, khám phá vùng đất rộng lớn, đối mặt với bí ẩn và vận mệnh cá nhân.\n\nCảm nhận (tóm tắt từ trang cửa hàng và trải nghiệm sơ bộ):\n- Thế giới mở quy mô lớn với hơn 20 vùng địa danh, thời tiết và thời gian động tạo nên nhiều khung cảnh đẹp để chụp ảnh.\n- Lối chơi Wuxia đa dạng: di chuyển trên nóc nhà, lướt không khí, sử dụng nhiều loại vũ khí (kiếm, thương, phi tiêu, cung, quạt, dù) và kỹ năng tuỳ chỉnh.\n- Hệ thống chiến đấu thiên về hành động/chiến thuật, có thể chơi đơn hoặc hợp tác tối đa 4 người; có cả hoạt động guild, PvP và dungeon co-op.\n- Nội dung phong phú nhưng đòi hỏi cấu hình tương đối cao (khuyến nghị SSD và GPU mạnh); hiện đánh giá cộng đồng là rất tích cực."
+}

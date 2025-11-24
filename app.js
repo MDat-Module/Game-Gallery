@@ -9,6 +9,13 @@ const cfgFallback = 'config.example.json';
 let config = null;
 let authToken = null;
 let games = [];
+var imagesRawBaseUrl= "";
+var imagesFilenamePattern = "";
+var imagesStart = 1;
+var imagesEnd = 1;
+var imagesNumberPadding = 3;
+var summary = "";
+var videos = ""; 
 // cache for thumbnails and summaries to avoid re-fetching
 const thumbCache = new Map();
 
@@ -159,9 +166,17 @@ async function openGame(name, txtUrl){
       text = await fetchRaw(txtUrl);
     }
     // parse optional front-matter metadata
-    const { meta, body } = parseMetaFromText(text);
-    document.getElementById('gameText').textContent = body;
-    await loadGallery(name, meta);
+    //const meta  = parseMetaFromText(text);
+    let obj = JSON.parse(text);
+    summary = obj.summary || "";
+    imagesRawBaseUrl = obj.imagesRawBaseUrl || "";
+    imagesFilenamePattern = obj.imagesFilenamePattern || "";
+    imagesStart = isNumeric(obj.imagesStart) ? Number(obj.imagesStart) : 1;
+    imagesEnd = isNumeric(obj.imagesEnd) ? Number(obj.imagesEnd) : 1;
+    imagesNumberPadding = isNumeric(obj.imagesNumberPadding) ? Number(obj.imagesNumberPadding) : 3;
+    videos = obj.videos ||  "";
+    await loadGallery(name, text);
+    document.getElementById('gameText').textContent = obj.body;
     // update URL so this game can be linked and reopened directly
     try{ location.hash = 'game=' + encodeURIComponent(name); }catch(e){}
     // smooth-scroll the info panel into view so user doesn't have to scroll manually
@@ -170,38 +185,33 @@ async function openGame(name, txtUrl){
 }
 
 // Parse a simple YAML-like front-matter block delimited by '---' at the start
-function parseMetaFromText(txt){
-  if(!txt || !txt.startsWith('---')) return { meta: null, body: txt };
-  const endMarker = '\n---';
-  const endIdx = txt.indexOf(endMarker, 3);
-  if(endIdx === -1) return { meta: null, body: txt };
-  const block = txt.slice(3, endIdx + 1).trim();
-  const body = txt.slice(endIdx + endMarker.length).trim();
-  const lines = block.split(/\r?\n/).map(l=>l.replace(/\r/g,'')).filter(Boolean);
-  const meta = {};
-  let currentKey = null;
-  for(const line of lines){
-    if(line.startsWith('-') && currentKey){
-      const v = line.slice(1).trim();
-      if(!Array.isArray(meta[currentKey])) meta[currentKey] = [];
-      meta[currentKey].push(v);
-      continue;
+function parseMetaFromText(txt) {
+  if (!txt || typeof txt !== "string") return { meta: null, body: "" };
+
+  try {
+    // ←←←← QUAN TRỌNG NHẤT: ĐẢM BẢO CHUỖI LÀ JSON HỢP LỆ
+    const raw = txt.trim();
+
+    // Nếu chuỗi có xuống dòng hoặc tab → vẫn parse được
+    const data = JSON.parse(raw);
+
+    // Kiểm tra data có phải object không
+    if (data && typeof data === "object" && !Array.isArray(data)) {
+      const { body, ...meta } = data;           // tách body ra
+      return {
+        meta: meta,                             // imagesStart, imagesEnd, summary, …
+        body: body ?? ""                        // nội dung hiển thị
+      };
     }
-    const m = line.match(/^([A-Za-z0-9_\-]+)\s*:\s*(.*)$/);
-    if(m){
-      const key = m[1];
-      let val = m[2] || '';
-      if(val.startsWith('[') && val.endsWith(']')){
-        try{ meta[key] = JSON.parse(val); }catch(e){ meta[key] = val; }
-      }else if(val === ''){
-        meta[key] = meta[key] || [];
-      }else{
-        meta[key] = isNumeric(val) ? Number(val) : val;
-      }
-      currentKey = key;
-    }
+
+    // Không có body → coi toàn bộ là body
+    return { meta: null, body: raw };
+
+  } catch (e) {
+    console.error("PARSE JSON THẤT BẠI:", e.message);
+    console.error("NỘI DUNG GÂY LỖI:\n", txt);
+    return { meta: null, body: txt };
   }
-  return { meta, body };
 }
 
 function isNumeric(v){ return !isNaN(v) && v !== '' && v !== null; }
@@ -223,11 +233,11 @@ function youtubeEmbedUrl(u){
   return null;
 }
 
-async function loadGallery(gameName, meta){
+async function loadGallery(gameName, text){
   const thumbs = document.getElementById('thumbs');
   const thumbs1 = document.getElementById('thumbs1');
-  thumbs.innerHTML = 'Đang tải ảnh...';
-  
+  thumbs.innerHTML = 'Đang tải ảnh...'; 
+  let meta = JSON.parse(text);
   const videoContainer = document.getElementById('videoContainer');
   if(videoContainer) videoContainer.innerHTML = '';
 
@@ -257,18 +267,19 @@ async function loadGallery(gameName, meta){
 
   // Priority: per-file meta -> global config -> GitHub API fallback
 
+    
   // If meta provides explicit images array
-  if(meta && meta.images.length>0){
-    const list = meta.images.map(x => {
-      if(/^https?:\/\//i.test(x)) return x;
-      const base = meta.imagesRawBaseUrl || '';
-      if(base) return buildImageUrl(base, gameName, x);
-      return x;
-    });
-    thumbs.innerHTML = '';
-    list.forEach((u, idx)=>{ const im=document.createElement('img'); im.src=u; im.className='thumb'; im.loading='lazy'; im.onclick=()=>openLightbox(list, idx); thumbs.appendChild(im); });
-    return;
-  }
+  // if(meta && meta.images.length>0){
+  //   const list = meta.images.map(x => {
+  //     if(/^https?:\/\//i.test(x)) return x;
+  //     const base = meta.imagesRawBaseUrl || '';
+  //     if(base) return buildImageUrl(base, gameName, x);
+  //     return x;
+  //   });
+  //   thumbs.innerHTML = '';
+  //   list.forEach((u, idx)=>{ const im=document.createElement('img'); im.src=u; im.className='thumb'; im.loading='lazy'; im.onclick=()=>openLightbox(list, idx); thumbs.appendChild(im); });
+  //   return;
+  // }
 
   // If meta provides raw base + pattern
   if(meta && meta.imagesRawBaseUrl && meta.imagesFilenamePattern){

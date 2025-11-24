@@ -1,19 +1,12 @@
----
-imagesRawBaseUrl: https://raw.githubusercontent.com/MDat-Module/ImgHost/main/Palworld
-imagesFilenamePattern: {n}.jpg
-imagesStart: 1
-imagesEnd: 80
-imagesNumberPadding: 3
-images:
- -  001.jpg
-summary: Một tựa game pha trộn sinh tồn, xây dựng và "thuần hoá" sinh vật (Pals), vui nhộn và đa dạng hoạt động.
----
-
-Palworld: Trò chơi pha trộn yếu tố Pokemon-like (thuần hoá), Minecraft (xây dựng) và shooter/survival. Phát triển bởi Pocketpair, Palworld thu hút bởi lối chơi đa dạng, hệ thống Pal phong phú và chế độ co-op.
-
-Cảm nhận:
-- Gameplay rất dễ gây nghiện: thu thập, thuần hoá và sử dụng Pals cho nông nghiệp, khai thác, chiến đấu hoặc thậm chí sản xuất.
-- Xây dựng và quản lý sở hữu tài nguyên cho phép sáng tạo cao; chế độ co-op tăng tính tương tác khi chơi cùng bạn bè.
-- Hệ thống chiến đấu và thiết bị khá đa dạng, có thể chơi theo phong cách tấn công trực diện hoặc tận dụng Pals hỗ trợ.
-- Có tranh cãi xung quanh một số cơ chế kinh tế và nội dung, nhưng về mặt giải trí Palworld là trải nghiệm vui và nhiều chiều.
-
+{
+  "imagesRawBaseUrl": "https://raw.githubusercontent.com/MDat-Module/ImgHost/main/Palworld",
+  "imagesFilenamePattern": "{n}.jpg",
+  "imagesStart": 1,
+  "imagesEnd": 80,
+  "imagesNumberPadding": 3,
+  "images": [
+    "001.jpg"
+  ],
+  "summary": "Một tựa game pha trộn sinh tồn, xây dựng và \"thuần hoá\" sinh vật (Pals), vui nhộn và đa dạng hoạt động.",
+  "body": "Palworld: Trò chơi pha trộn yếu tố Pokemon-like (thuần hoá), Minecraft (xây dựng) và shooter/survival. Phát triển bởi Pocketpair, Palworld thu hút bởi lối chơi đa dạng, hệ thống Pal phong phú và chế độ co-op.\n\nCảm nhận:\n- Gameplay rất dễ gây nghiện: thu thập, thuần hoá và sử dụng Pals cho nông nghiệp, khai thác, chiến đấu hoặc thậm chí sản xuất.\n- Xây dựng và quản lý sở hữu tài nguyên cho phép sáng tạo cao; chế độ co-op tăng tính tương tác khi chơi cùng bạn bè.\n- Hệ thống chiến đấu và thiết bị khá đa dạng, có thể chơi theo phong cách tấn công trực diện hoặc tận dụng Pals hỗ trợ.\n- Có tranh cãi xung quanh một số cơ chế kinh tế và nội dung, nhưng về mặt giải trí Palworld là trải nghiệm vui và nhiều chiều."
+}

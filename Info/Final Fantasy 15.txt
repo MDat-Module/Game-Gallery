@@ -4,6 +4,6 @@
   "imagesStart": 1,
   "imagesEnd": 196,
   "imagesNumberPadding": 3,
-  "summary": "MHành trình hoành tráng của Noctis và bạn bè qua một thế giới rộng lớn.",
-  "body": "Final Fantasy XV: Hành trình hoành tráng của Noctis và bạn bè qua một thế giới rộng lớn."
+  "summary": "Hành trình hoành tráng của Noctis và bạn bè qua một thế giới rộng lớn.",
+  "body": "Final Fantasy XV: Hành trình hoành tráng của Noctis và bạn bè qua một thế giới rộng lớn.\n\nCảm nhận:\n- Thế giới mở đẹp, thiết kế cảnh vật ấn tượng.\n- Cốt truyện có nhiều đoạn cảm xúc, nhưng gameplay đôi lúc bị rời rạc.\n- Nếu bạn thích khám phá và chụp ảnh trong game, đây là trò phù hợp."
 }
