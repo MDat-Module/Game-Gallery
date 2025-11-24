@@ -310,27 +310,27 @@ async function loadGallery(gameName, meta){
     }catch(err){ thumbs.innerHTML = 'Không thể tải index ảnh.'; return; }
   }
 
-  // Mode 2: global raw base + pattern
-  if(config && config.imagesRawBaseUrl && config.imagesFilenamePattern){
-    const start = Number(config.imagesStart || 1);
-    const end = Number(config.imagesEnd || 10);
-    const pad = Number(config.imagesNumberPadding || 0);
-    const urls = [];
-    for(let i=start;i<=end;i++){ let n=String(i); if(pad>0) n=n.padStart(pad,'0'); let fname = config.imagesFilenamePattern.replace(/\{game\}/g, gameName).replace(/\{n\}/g,n); urls.push(buildImageUrl(config.imagesRawBaseUrl, gameName, fname)); }
-    thumbs.innerHTML = '';
-    urls.forEach((u, idx)=>{ const im=document.createElement('img'); im.src=u; im.className='thumb'; im.loading='lazy'; im.onclick=()=>openLightbox(urls, idx); thumbs.appendChild(im); });
-    return;
-  }
+  // // Mode 2: global raw base + pattern
+  // if(config && config.imagesRawBaseUrl && config.imagesFilenamePattern){
+  //   const start = Number(config.imagesStart || 1);
+  //   const end = Number(config.imagesEnd || 10);
+  //   const pad = Number(config.imagesNumberPadding || 0);
+  //   const urls = [];
+  //   for(let i=start;i<=end;i++){ let n=String(i); if(pad>0) n=n.padStart(pad,'0'); let fname = config.imagesFilenamePattern.replace(/\{game\}/g, gameName).replace(/\{n\}/g,n); urls.push(buildImageUrl(config.imagesRawBaseUrl, gameName, fname)); }
+  //   thumbs.innerHTML = '';
+  //   urls.forEach((u, idx)=>{ const im=document.createElement('img'); im.src=u; im.className='thumb'; im.loading='lazy'; im.onclick=()=>openLightbox(urls, idx); thumbs.appendChild(im); });
+  //   return;
+  // }
 
-  // Mode 3: fallback to GitHub API listing (original behavior)
-  const path = `${config.imagesFolderPrefix || ''}/${gameName}`.replace(/^\/+/, '');
-  const items = await fetchContents(config.imagesRepoOwner, config.imagesRepoName, path, config.imagesRepoBranch);
-  if(!items){ thumbs.innerHTML = 'Không tìm thấy thư mục ảnh cho game này.'; return; }
-  const images = items.filter(i=>i.type==='file' && /\.(png|jpe?g|gif|webp|bmp)$/i.test(i.name));
-  if(images.length===0){ thumbs.innerHTML = 'Không có ảnh trong thư mục này.'; return; }
-  thumbs.innerHTML = '';
-  const urls = images.map(i=>i.download_url);
-  images.forEach((img, idx)=>{ const im=document.createElement('img'); im.src = img.download_url; im.className='thumb'; im.loading='lazy'; im.onclick = ()=>openLightbox(urls, idx); thumbs.appendChild(im); });
+  // // Mode 3: fallback to GitHub API listing (original behavior)
+  // const path = `${config.imagesFolderPrefix || ''}/${gameName}`.replace(/^\/+/, '');
+  // const items = await fetchContents(config.imagesRepoOwner, config.imagesRepoName, path, config.imagesRepoBranch);
+  // if(!items){ thumbs.innerHTML = 'Không tìm thấy thư mục ảnh cho game này.'; return; }
+  // const images = items.filter(i=>i.type==='file' && /\.(png|jpe?g|gif|webp|bmp)$/i.test(i.name));
+  // if(images.length===0){ thumbs.innerHTML = 'Không có ảnh trong thư mục này.'; return; }
+  // thumbs.innerHTML = '';
+  // const urls = images.map(i=>i.download_url);
+  // images.forEach((img, idx)=>{ const im=document.createElement('img'); im.src = img.download_url; im.className='thumb'; im.loading='lazy'; im.onclick = ()=>openLightbox(urls, idx); thumbs.appendChild(im); });
 }
 
 // Resolve a single thumbnail URL for a game (first available image)
