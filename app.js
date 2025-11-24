@@ -142,6 +142,8 @@ async function loadGameList(){
 }
 
 async function openGame(name, txtUrl){
+  
+  thumbs1.innerHTML = ' Start 1 ' + name + ' ' + txtUrl;
   // Switch to single-game view: hide grid and show info panel
   const gridSection = document.getElementById('gameGridSection');
   if(gridSection) gridSection.classList.add('hidden');
@@ -227,7 +229,6 @@ async function loadGallery(gameName, meta){
   const thumbs1 = document.getElementById('thumbs1');
   thumbs.innerHTML = 'Đang tải ảnh...';
   
-  thumbs1.innerHTML = ' Start';
   const videoContainer = document.getElementById('videoContainer');
   if(videoContainer) videoContainer.innerHTML = '';
 
@@ -255,7 +256,6 @@ async function loadGallery(gameName, meta){
     }
   }catch(e){}
 
-  thumbs1.innerHTML = ' Start 1';
   // Priority: per-file meta -> global config -> GitHub API fallback
 
   // If meta provides explicit images array
@@ -270,13 +270,10 @@ async function loadGallery(gameName, meta){
     list.forEach((u, idx)=>{ const im=document.createElement('img'); im.src=u; im.className='thumb'; im.loading='lazy'; im.onclick=()=>openLightbox(list, idx); thumbs.appendChild(im); });
     return;
   }
-  thumbs1.innerHTML = ' Start 2 ';
-  thumbs1.innerHTML = ' Start 2 ' + meta.imagesRawBaseUrl + ' ' + meta.imagesFilenamePattern;
 
   // If meta provides raw base + pattern
   if(meta && meta.imagesRawBaseUrl && meta.imagesFilenamePattern){
     
-    thumbs1.innerHTML = 'start meta provides raw base + pattern';
     const start = Number(meta.imagesStart || meta.start || config.imagesStart || 1);
     const end = Number(meta.imagesEnd || meta.end || config.imagesEnd || 10);
     const pad = Number(meta.imagesNumberPadding || meta.numberPadding || config.imagesNumberPadding || 0);
@@ -285,7 +282,6 @@ async function loadGallery(gameName, meta){
     thumbs.innerHTML = '';
     urls.forEach((u, idx)=>{ const im=document.createElement('img'); im.src=u; im.className='thumb'; im.loading='lazy'; im.onclick=()=>openLightbox(urls, idx); thumbs.appendChild(im); });
     
-    thumbs1.innerHTML = ' meta provides raw base + pattern';
     return;
   }
 
