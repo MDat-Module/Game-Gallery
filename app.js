@@ -288,27 +288,46 @@ async function loadGallery(gameName, meta){
     return;
   }
 
+    const start = Number(meta.imagesStart || 1);
+    const end = Number(meta.imagesEnd || 10);
+    const pad = Number(meta.imagesNumberPadding || 0);
+    const urls = [];
+    for(let i=start;i<=end;i++)
+      { 
+        let n=String(i);
+        if(pad>0) 
+          n=n.padStart(pad,'0');
+        let fname = config.imagesFilenamePattern.replace(/\{game\}/g, gameName).replace(/\{n\}/g,n); urls.push(buildImageUrl(config.imagesRawBaseUrl, gameName, fname)); 
+      }
+    thumbs.innerHTML = '';
+    urls.forEach((u, idx)=>{ 
+      const im=document.createElement('img');
+       im.src=u; im.className='thumb'; 
+       im.loading='lazy'; 
+       im.onclick=()=>openLightbox(urls, idx); thumbs.appendChild(im); 
+      });
+    return;
   // Mode 1: imagesIndexUrl (meta overrides config)
-  const indexUrl = (meta && meta.imagesIndexUrl) ? meta.imagesIndexUrl : (config && config.imagesIndexUrl);
-  if(true){
-    try{
-      const r = await fetch(indexUrl, { headers: apiHeaders() });
-      if(!r.ok) throw new Error('Không thể tải index ảnh');
-      const index = await r.json();
-      const list = index[gameName] || index[encodeURIComponent(gameName)] || index[gameName.replace(/%20/g,' ')];
-      if(!Array.isArray(list) || list.length===0){ thumbs.innerHTML = 'Không có ảnh trong index cho game này.'; return; }
-      const urls = list.map(x => {
-        if(typeof x !== 'string') return null;
-        if(/^https?:\/\//i.test(x)) return x;
-        const base = (meta && meta.imagesRawBaseUrl) ? meta.imagesRawBaseUrl : config.imagesRawBaseUrl;
-        if(base) return buildImageUrl(base, gameName, x);
-        return x;
-      }).filter(Boolean);
-      thumbs.innerHTML = '';
-      urls.forEach((u, idx)=>{ const im=document.createElement('img'); im.src=u; im.className='thumb'; im.loading='lazy'; im.onclick=()=>openLightbox(urls, idx); thumbs.appendChild(im); });
-      return;
-    }catch(err){ thumbs.innerHTML = 'Không thể tải index ảnh.'; return; }
-  }
+  // const indexUrl = (meta && meta.imagesIndexUrl) ? meta.imagesIndexUrl : (config && config.imagesIndexUrl);
+  // if(indexUrl){
+  //   try{
+  //      const r = await fetch(indexUrl, { headers: apiHeaders() });
+  //      if(!r.ok) throw new Error('Không thể tải index ảnh');
+  //      const index = await r.json();
+  //     const list = index[gameName] || index[encodeURIComponent(gameName)] || index[gameName.replace(/%20/g,' ')];
+  //     if(!Array.isArray(list) || list.length===0){ thumbs.innerHTML = 'Không có ảnh trong index cho game này.'; return; }
+  //     const urls = list.map(x => {
+  //       if(typeof x !== 'string') return null;
+  //       if(/^https?:\/\//i.test(x)) return x;
+  //       const base = (meta && meta.imagesRawBaseUrl) ? meta.imagesRawBaseUrl : config.imagesRawBaseUrl;
+  //       if(base) return buildImageUrl(base, gameName, x);
+  //       return x;
+  //     }).filter(Boolean);
+  //     thumbs.innerHTML = '';
+  //     urls.forEach((u, idx)=>{ const im=document.createElement('img'); im.src=u; im.className='thumb'; im.loading='lazy'; im.onclick=()=>openLightbox(urls, idx); thumbs.appendChild(im); });
+  //     return;
+  //   }catch(err){ thumbs.innerHTML = 'Không thể tải index ảnh.'; return; }
+  // }
 
   // // Mode 2: global raw base + pattern
   // if(config && config.imagesRawBaseUrl && config.imagesFilenamePattern){
