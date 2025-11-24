@@ -270,7 +270,8 @@ async function loadGallery(gameName, meta){
     list.forEach((u, idx)=>{ const im=document.createElement('img'); im.src=u; im.className='thumb'; im.loading='lazy'; im.onclick=()=>openLightbox(list, idx); thumbs.appendChild(im); });
     return;
   }
-  thumbs1.innerHTML = ' Start 2';
+  thumbs1.innerHTML = ' Start 2 ';
+  thumbs1.innerHTML = ' Start 2 ' + meta.imagesRawBaseUrl + ' ' + meta.imagesFilenamePattern;
 
   // If meta provides raw base + pattern
   if(meta && meta.imagesRawBaseUrl && meta.imagesFilenamePattern){
@@ -288,8 +289,6 @@ async function loadGallery(gameName, meta){
     return;
   }
 
-  thumbs1.innerHTML = ' Start 3';
-  thumbs1.innerHTML = ' Mode 1';
   // Mode 1: imagesIndexUrl (meta overrides config)
   const indexUrl = (meta && meta.imagesIndexUrl) ? meta.imagesIndexUrl : (config && config.imagesIndexUrl);
   if(indexUrl){
@@ -311,7 +310,6 @@ async function loadGallery(gameName, meta){
       return;
     }catch(err){ thumbs.innerHTML = 'Không thể tải index ảnh.'; return; }
   }
-  thumbs1.innerHTML = ' Mode 2';
   // Mode 2: global raw base + pattern
   if(config && config.imagesRawBaseUrl && config.imagesFilenamePattern){
     const start = Number(config.imagesStart || 1);
@@ -324,7 +322,6 @@ async function loadGallery(gameName, meta){
     return;
   }
 
-  thumbs1.innerHTML = ' Mode 3';
   // Mode 3: fallback to GitHub API listing (original behavior)
   const path = `${config.imagesFolderPrefix || ''}/${gameName}`.replace(/^\/+/, '');
   const items = await fetchContents(config.imagesRepoOwner, config.imagesRepoName, path, config.imagesRepoBranch);
