@@ -1,5 +1,5 @@
 ---
-imagesRawBaseUrl: https://raw.githubusercontent.com/MDat-Module/ImgHost/main/Final%20Fantasy%20XV
+imagesRawBaseUrl: https://raw.githubusercontent.com/MDat-Module/ImgHost/main/Final%20Fantasy%20XV/
 imagesFilenamePattern: FinalFantasyXV_{n}.jpg
 imagesStart: 1
 imagesEnd: 196
