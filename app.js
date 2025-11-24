@@ -38,7 +38,7 @@ function buildImageUrl(base, gameName, filename){
   if(!base) return `/${encodePath(filename)}`;
   // If base contains placeholder {game}, replace it
   if(base.includes('{game}')){
-    const resolved = base.replace(/\{game\}/g, encodeURIComponent(gameName)).replace(/\/$/,'');
+    const resolved = base;
     return `${resolved}/${encodePath(filename)}`;
   }
   // Do NOT auto-append the game folder. Simply return base + filename.
@@ -224,7 +224,10 @@ function youtubeEmbedUrl(u){
 
 async function loadGallery(gameName, meta){
   const thumbs = document.getElementById('thumbs');
+  const thumbs1 = document.getElementById('thumbs1');
   thumbs.innerHTML = 'Đang tải ảnh...';
+  
+  thumbs1.innerHTML = ' Start';
   const videoContainer = document.getElementById('videoContainer');
   if(videoContainer) videoContainer.innerHTML = '';
 
@@ -252,13 +255,14 @@ async function loadGallery(gameName, meta){
     }
   }catch(e){}
 
+  thumbs1.innerHTML = ' Start 1';
   // Priority: per-file meta -> global config -> GitHub API fallback
 
   // If meta provides explicit images array
-  if(meta && meta.images && Array.isArray(meta.images) && meta.images.length>0){
+  if(meta && meta.images.length>0){
     const list = meta.images.map(x => {
       if(/^https?:\/\//i.test(x)) return x;
-      const base = meta.imagesRawBaseUrl || config.imagesRawBaseUrl || '';
+      const base = meta.imagesRawBaseUrl || '';
       if(base) return buildImageUrl(base, gameName, x);
       return x;
     });
@@ -266,9 +270,12 @@ async function loadGallery(gameName, meta){
     list.forEach((u, idx)=>{ const im=document.createElement('img'); im.src=u; im.className='thumb'; im.loading='lazy'; im.onclick=()=>openLightbox(list, idx); thumbs.appendChild(im); });
     return;
   }
+  thumbs1.innerHTML = ' Start 2';
 
   // If meta provides raw base + pattern
   if(meta && meta.imagesRawBaseUrl && meta.imagesFilenamePattern){
+    
+    thumbs1.innerHTML = 'start meta provides raw base + pattern';
     const start = Number(meta.imagesStart || meta.start || config.imagesStart || 1);
     const end = Number(meta.imagesEnd || meta.end || config.imagesEnd || 10);
     const pad = Number(meta.imagesNumberPadding || meta.numberPadding || config.imagesNumberPadding || 0);
@@ -276,9 +283,13 @@ async function loadGallery(gameName, meta){
     for(let i=start;i<=end;i++){ let n=String(i); if(pad>0) n=n.padStart(pad,'0'); let fname = meta.imagesFilenamePattern.replace(/\{game\}/g, gameName).replace(/\{n\}/g,n); urls.push(buildImageUrl(meta.imagesRawBaseUrl, gameName, fname)); }
     thumbs.innerHTML = '';
     urls.forEach((u, idx)=>{ const im=document.createElement('img'); im.src=u; im.className='thumb'; im.loading='lazy'; im.onclick=()=>openLightbox(urls, idx); thumbs.appendChild(im); });
+    
+    thumbs1.innerHTML = ' meta provides raw base + pattern';
     return;
   }
 
+  thumbs1.innerHTML = ' Start 3';
+  thumbs1.innerHTML = ' Mode 1';
   // Mode 1: imagesIndexUrl (meta overrides config)
   const indexUrl = (meta && meta.imagesIndexUrl) ? meta.imagesIndexUrl : (config && config.imagesIndexUrl);
   if(indexUrl){
@@ -291,7 +302,7 @@ async function loadGallery(gameName, meta){
       const urls = list.map(x => {
         if(typeof x !== 'string') return null;
         if(/^https?:\/\//i.test(x)) return x;
-        const base = (meta && meta.imagesRawBaseUrl) ? meta.imagesRawBaseUrl : config.imagesRawBaseUrl;
+        const base = meta.imagesRawBaseUrl;
         if(base) return buildImageUrl(base, gameName, x);
         return x;
       }).filter(Boolean);
@@ -300,7 +311,7 @@ async function loadGallery(gameName, meta){
       return;
     }catch(err){ thumbs.innerHTML = 'Không thể tải index ảnh.'; return; }
   }
-
+  thumbs1.innerHTML = ' Mode 2';
   // Mode 2: global raw base + pattern
   if(config && config.imagesRawBaseUrl && config.imagesFilenamePattern){
     const start = Number(config.imagesStart || 1);
@@ -313,6 +324,7 @@ async function loadGallery(gameName, meta){
     return;
   }
 
+  thumbs1.innerHTML = ' Mode 3';
   // Mode 3: fallback to GitHub API listing (original behavior)
   const path = `${config.imagesFolderPrefix || ''}/${gameName}`.replace(/^\/+/, '');
   const items = await fetchContents(config.imagesRepoOwner, config.imagesRepoName, path, config.imagesRepoBranch);

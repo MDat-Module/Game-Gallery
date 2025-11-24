@@ -2,7 +2,7 @@
 imagesRawBaseUrl: https://raw.githubusercontent.com/MDat-Module/ImgHost/main/EldenRing
 imagesFilenamePattern: {n}.jpg
 imagesStart: 1
-imagesEnd: 50
+imagesEnd: 1
 imagesNumberPadding: 3
 images:
  - 001.jpg
