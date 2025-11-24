@@ -143,7 +143,6 @@ async function loadGameList(){
 
 async function openGame(name, txtUrl){
   
-  thumbs1.innerHTML = ' Start 1 ' + name + ' ' + txtUrl;
   // Switch to single-game view: hide grid and show info panel
   const gridSection = document.getElementById('gameGridSection');
   if(gridSection) gridSection.classList.add('hidden');
