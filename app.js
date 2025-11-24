@@ -35,14 +35,23 @@ function encodePath(p){
 }
 
 function buildImageUrl(base, gameName, filename){
-  if(!base) return `/${encodePath(filename)}`;
-  // If base contains placeholder {game}, replace it
-  if(base.includes('{game}')){
-    const resolved = base.replace(/\{game\}/g, encodeURIComponent(gameName)).replace(/\/$/,'');
-    return `${resolved}/${encodePath(filename)}`;
+  // If filename is already an absolute URL, return as-is
+  if(typeof filename === 'string' && /^https?:\/\//i.test(filename)) return filename;
+  if(!base) return `/${encodePath(String(filename))}`;
+  // Replace {game} token if present
+  let resolvedBase = String(base);
+  if(resolvedBase.includes('{game}')){
+    resolvedBase = resolvedBase.replace(/\{game\}/g, encodeURIComponent(gameName));
   }
-  // Do NOT auto-append the game folder. Simply return base + filename.
-  return `${base.replace(/\/$/,'')}/${encodePath(filename)}`;
+  // normalize slashes
+  resolvedBase = resolvedBase.replace(/\/+$/,'');
+  // normalize filename and encode each segment
+  let f = String(filename || '').replace(/^\/+/, '');
+  const parts = f.split('/').filter(Boolean).map(s=>encodeURIComponent(s));
+  const url = `${resolvedBase}/${parts.join('/')}`;
+  // debug helper (only logs in console; harmless in production)
+  try{ if(window && window.console) console.debug('buildImageUrl ->', { base: resolvedBase, gameName, filename: f, url }); }catch(e){}
+  return url;
 }
 
 async function fetchContents(owner, repo, path, branch){
