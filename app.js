@@ -290,7 +290,7 @@ async function loadGallery(gameName, meta){
 
   // Mode 1: imagesIndexUrl (meta overrides config)
   const indexUrl = (meta && meta.imagesIndexUrl) ? meta.imagesIndexUrl : (config && config.imagesIndexUrl);
-  if(indexUrl){
+  if(true){
     try{
       const r = await fetch(indexUrl, { headers: apiHeaders() });
       if(!r.ok) throw new Error('Không thể tải index ảnh');
