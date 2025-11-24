@@ -1,0 +1,22 @@
+{
+  "siteRepoOwner": "<your-github-username>",
+  "siteRepoName": "<this-repo-name-containing-Info>",
+  "siteBranch": "main",
+
+  "imagesRepoOwner": "<your-github-username-or-org>",
+  "imagesRepoName": "<images-repo-name>",
+  "imagesRepoBranch": "main",
+  "imagesFolderPrefix": ""  
+  ,
+  "localInfo": true,
+  "infoIndexPath": "Info/index.json",
+  "infoBasePath": "Info",
+
+  "# Images modes": "You can use either GitHub API listing (default), or provide a raw URLs mode or an images index JSON.",
+  "imagesIndexUrl": "", /* optional: full URL to a JSON mapping gameName -> [ filenames | fullUrls ] */
+  "imagesRawBaseUrl": "", /* optional: base raw URL e.g. https://raw.githubusercontent.com/MDat-Module/ImgHost/main */
+  "imagesFilenamePattern": "", /* optional pattern using {game} and/or {n}, e.g. "{game}_{n}.jpg" */
+  "imagesStart": 1,
+  "imagesEnd": 10,
+  "imagesNumberPadding": 3
+}

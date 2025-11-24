@@ -1,0 +1,20 @@
+---
+imagesRawBaseUrl: https://raw.githubusercontent.com/MDat-Module/ImgHost/main/StardewValley
+imagesFilenamePattern: {n}.jpg
+imagesStart: 1
+imagesEnd: 1
+imagesNumberPadding: 3
+images:
+ - 001.jpg
+videos:
+- https://youtu.be/Fq_-zgMIKb8?si=6mNeu1KPyZy-2CfD
+summary: Một tựa game thư giãn, ấm áp — làm nông, kết bạn và khám phá làng Pelican Town.
+---
+Stardew Valley: Cuộc sống nông trại tại Pelican Town — một trải nghiệm thư giãn, nhiều hoạt động và đầy ấm áp.
+
+Cảm nhận:
+- Gameplay rất thư giãn, tạo cảm giác gắn bó theo thời gian (vòng đời mùa vụ).
+- Hệ thống trồng trọt, chăn nuôi và khai thác mỏ có chiều sâu, phù hợp cả chơi ngắn lẫn chơi dài.
+- Các nhân vật trong làng được xây dựng tốt; các mối quan hệ và sự kiện mùa đem lại nhiều bất ngờ.
+- Rất phù hợp để chơi thư giãn, sáng tạo trang trí nông trại và chụp ảnh phong cảnh.
+

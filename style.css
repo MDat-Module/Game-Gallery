@@ -1,0 +1,69 @@
+:root{--bg:#0f1724;--card:#0b1220;--accent:#7dd3fc;color-scheme:dark}
+*{box-sizing:border-box}
+/* Generic helper to hide elements by class */
+.hidden{display:none!important}
+html,body{height:100%;margin:0;background:linear-gradient(180deg,#071026 0%,#081426 100%);font-family:Inter,Segoe UI,Arial}
+header{padding:14px 20px;color:var(--accent);display:flex;justify-content:space-between;align-items:center}
+header h1{margin:0;font-size:20px;cursor:pointer}
+/* Small description under the header on the main content */
+#siteDesc{color:#9fbfd2;margin:8px 0 12px 0;font-size:14px}
+
+/* Video container styling */
+/* Video container: more compact by default to avoid huge embeds */
+/* Video container: smaller embeds that preserve 16:9 aspect ratio */
+#videoContainer{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:12px;justify-items:center}
+.video-wrap{position:relative;width:100%;max-width:360px;background:#000;border-radius:6px;overflow:hidden}
+.video-wrap::before{content:'';display:block;padding-top:56.25%}
+.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+
+/* Keep full-width/normal aspect on very small screens for usability */
+@media(max-width:420px){
+  #videoContainer{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));justify-items:stretch}
+  .video-wrap{max-width:none}
+}
+.container{display:flex;height:calc(100vh - 68px)}
+aside#sidebar{width:280px;background:rgba(11,18,32,0.85);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:16px;overflow:auto;border-right:1px solid rgba(255,255,255,0.06);box-shadow:0 6px 20px rgba(2,6,23,0.6)}
+aside h2{margin:0 0 10px 0;color:#cfeefb}
+ul#gameList{list-style:none;padding:0;margin:0}
+ul#gameList li{padding:8px 10px;border-radius:6px;margin-bottom:6px;color:#d9f7ff;cursor:pointer}
+ul#gameList li:hover{background:rgba(125,211,252,0.06)}
+.config{margin-top:12px}
+.config input{width:100%;padding:6px;margin-top:6px}
+.config button{margin-top:6px;padding:6px 8px}
+main{flex:1;padding:18px;overflow:auto}
+#gameGridSection{margin-bottom:16px}
+#gameGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.game-card{background:rgba(255,255,255,0.03);padding:8px;border-radius:8px;display:flex;flex-direction:column;align-items:center;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
+.game-card:hover{transform:translateY(-4px);box-shadow:0 8px 18px rgba(2,6,23,0.6)}
+.game-thumb{width:100%;height:96px;object-fit:cover;border-radius:6px;background:#0b1220}
+.game-title{margin-top:8px;text-align:center;color:#dff7ff;font-weight:600}
+.game-summary{margin-top:6px;text-align:center;color:#9fcfdc;font-size:13px;line-height:1.2;max-height:4.8em;overflow:hidden;text-overflow:ellipsis}
+#infoPanel.hidden{display:none}
+#placeholder{color:#9fbfd2}
+#gameTitle{margin-top:0;color:#e6f8ff}
+#gameText{white-space:pre-wrap;background:rgba(255,255,255,0.02);padding:12px;border-radius:6px;color:#d7f3ff}
+#thumbs{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.thumb{width:120px;height:80px;object-fit:cover;border-radius:6px;cursor:pointer;border:2px solid transparent}
+.thumb:hover{border-color:rgba(125,211,252,0.6)}
+#lightbox{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.85)}
+#lightbox.hidden{display:none}
+#lightboxImg{max-width:95%;max-height:90%}
+#closeLightbox,#prevImg,#nextImg{position:fixed;z-index:50;background:rgba(255,255,255,0.06);border:none;color:#fff;padding:8px;border-radius:6px}
+#closeLightbox{top:18px;right:18px}
+#prevImg{left:18px;top:50%;transform:translateY(-50%)}
+#nextImg{right:18px;top:50%;transform:translateY(-50%)}
+#backBtn{margin-bottom:8px}
+@media(max-width:800px){aside#sidebar{display:none} .container{flex-direction:column} main{padding:12px}}
+
+/* Mobile drawer behavior */
+.hamburger{display:none;background:transparent;border:0;color:var(--accent);font-size:20px;padding:6px 8px;margin-right:8px}
+#overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:40}
+#overlay.hidden{display:none}
+
+@media(max-width:800px){
+  .hamburger{display:inline-block}
+  aside#sidebar{display:block;position:fixed;left:0;top:0;bottom:0;width:75%;max-width:320px;transform:translateX(-110%);transition:transform .22s ease-in-out;z-index:50;padding:18px;background:rgba(11,18,32,0.95);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 10px 30px rgba(2,6,23,0.7)}
+  aside#sidebar.mobile-open{transform:translateX(0)}
+  .container{flex-direction:column}
+  main{padding:12px}
+}

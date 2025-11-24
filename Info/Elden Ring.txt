@@ -1,0 +1,19 @@
+---
+imagesRawBaseUrl: https://raw.githubusercontent.com/MDat-Module/ImgHost/main/EldenRing
+imagesFilenamePattern: {n}.jpg
+imagesStart: 1
+imagesEnd: 50
+imagesNumberPadding: 3
+images:
+ - 001.jpg
+summary: Một thế giới rộng lớn, u ám và giàu chi tiết, nơi mỗi ngóc ngách đều có thể ẩn chứa bí ẩn.
+---
+
+Elden Ring: Một thế giới rộng lớn, u ám và giàu chi tiết, nơi mỗi ngóc ngách đều có thể ẩn chứa bí ẩn.
+
+Cảm nhận:
+- Thử thách combat rất đã, đòi hỏi người chơi phải học và thích nghi.
+- Thế giới thiết kế mở, nhiều địa danh ấn tượng để khám phá và chụp ảnh.
+- Bầu không khí cô đơn, huyền bí phù hợp để thưởng thức từng khoảnh khắc chiến đấu và khám phá.
+- Một số trận boss và khu vực có thể gây áp lực nhưng mang lại cảm giác đạt được mãn nguyện.
+

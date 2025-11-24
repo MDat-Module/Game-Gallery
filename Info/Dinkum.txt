@@ -1,0 +1,18 @@
+---
+imagesRawBaseUrl: https://raw.githubusercontent.com/MDat-Module/ImgHost/main/Dinkum
+imagesFilenamePattern: {n}.jpg
+imagesStart: 1
+imagesEnd: 40
+imagesNumberPadding: 3
+images:
+ - 001.jpg
+summary: Một trải nghiệm sinh tồn / nông trại trên đảo kiểu Úc, vui vẻ và giàu hoạt động.
+---
+
+Dinkum: Trò chơi có nhịp độ thư giãn nhưng cũng đủ chiều sâu để khám phá lâu dài.
+
+Cảm nhận:
+- Cảm giác xây dựng và khám phá đảo rất thoải mái, hệ thống nghề nghiệp và thu thập phong phú.
+- Gameplay phù hợp để chơi theo nhịp riêng, có nhiều mục tiêu và thợ nghề để thử.
+- Đồ họa tươi sáng, âm thanh dễ chịu, phù hợp để thư giãn hoặc chơi cùng bạn bè.
+

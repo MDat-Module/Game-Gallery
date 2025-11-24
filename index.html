@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Game Gallery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <button id="menuBtn" class="hamburger" aria-label="Mở menu">☰</button>
+    <h1>Game Gallery</h1>
+  </header>
+
+  <div class="container">
+    <aside id="sidebar">
+      <h2>Games</h2>
+      <ul id="gameList">Đang tải...</ul>
+      <div class="config">
+        <label>GitHub Token (tùy chọn):</label>
+        <input id="tokenInput" placeholder="ghp_... (chỉ khi cần tăng rate limit)">
+        <button id="applyToken">Áp dụng token</button>
+      </div>
+    </aside>
+
+    <main id="main">
+      <p id="siteDesc">Đây là thư viện ảnh lưu lại các kỉ niệm trong các trò chơi mà mình đã từng chơi</p>
+      <section id="gameGridSection">
+        <h2>Thư viện</h2>
+        <div id="gameGrid"> </div>
+      </section>
+
+      <div id="infoPanel" class="hidden">
+        <button id="backBtn">← Trở về</button>
+        <h2 id="gameTitle"></h2>
+        <pre id="gameText"></pre>
+        <div id="videoSection">
+          <h3>Video</h3>
+          <div id="videoContainer"></div>
+        </div>
+        <h3>Hình ảnh</h3>
+        <div id="gallery">
+          <div id="thumbs"></div>
+        </div>
+      </div>
+
+      <div id="placeholder">
+        <p>Chọn một game bên trái để xem thông tin và ảnh.</p>
+      </div>
+    </main>
+  </div>
+
+  <div id="lightbox" class="hidden">
+    <button id="closeLightbox">✕</button>
+    <button id="prevImg">◀</button>
+    <img id="lightboxImg" src="" alt="">
+    <button id="nextImg">▶</button>
+  </div>
+
+  <div id="overlay" class="hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+---
+imagesRawBaseUrl: https://raw.githubusercontent.com/MDat-Module/ImgHost/main/Final%20Fantasy%20XV
+imagesFilenamePattern: FinalFantasyXV_{n}.jpg
+imagesStart: 1
+imagesEnd: 196
+imagesNumberPadding: 3
+images:
+ - FinalFantasyXV_001.jpg
+ - FinalFantasyXV_002.jpg
+ - FinalFantasyXV_003.jpg
+summary: Hành trình hoành tráng của Noctis và bạn bè qua một thế giới rộng lớn.
+---
+
+Final Fantasy XV: Hành trình hoành tráng của Noctis và bạn bè qua một thế giới rộng lớn.
+
+Cảm nhận:
+- Thế giới mở đẹp, thiết kế cảnh vật ấn tượng.
+- Cốt truyện có nhiều đoạn cảm xúc, nhưng gameplay đôi lúc bị rời rạc.
+- Nếu bạn thích khám phá và chụp ảnh trong game, đây là trò phù hợp.
+
