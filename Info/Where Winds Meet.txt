@@ -1,6 +1,6 @@
 ---
 imagesRawBaseUrl: https://raw.githubusercontent.com/MDat-Module/ImgHost/main/WhereWindMeets
-imagesFilenamePattern: {n}.jpg
+imagesFilenamePattern: {n}.png
 imagesStart: 1
 imagesEnd: 40
 imagesNumberPadding: 3
