@@ -2,7 +2,7 @@
 imagesRawBaseUrl: https://raw.githubusercontent.com/MDat-Module/ImgHost/main/DQ8
 imagesFilenamePattern: {n}.png
 imagesStart: 1
-imagesEnd: 40
+imagesEnd: 75
 imagesNumberPadding: 3
 images:
  - 001.jpg
