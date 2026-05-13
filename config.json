@@ -10,12 +10,7 @@
 
   "localInfo": true,
   "infoIndexPath": "Info/index.json",
-  "infoBasePath": "Info",
+  "infoBasePath": "Info"
 
-  "imagesIndexUrl": "",
-  "imagesRawBaseUrl": "https://raw.githubusercontent.com/MDat-Module/ImgHost/main",
-  "imagesFilenamePattern": "{game}_{n}.jpg",
-  "imagesStart": 1,
-  "imagesEnd": 8,
-  "imagesNumberPadding": 3
+
 }
