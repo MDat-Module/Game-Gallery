@@ -4,6 +4,9 @@
   "imagesStart": 1,
   "imagesEnd": 1,
   "imagesNumberPadding": 3,
+  "videos": [
+    "https://youtu.be/x-wiH1YquSw?si=XNH01Dujv88Xazum"
+  ],
   "summary": "Một thế giới rộng lớn, u ám và giàu chi tiết, nơi mỗi ngóc ngách đều có thể ẩn chứa bí ẩn.",
   "body": "Elden Ring: Một thế giới rộng lớn, u ám và giàu chi tiết, nơi mỗi ngóc ngách đều có thể ẩn chứa bí ẩn.\n\nCảm nhận:\n- Thử thách combat rất đã, đòi hỏi người chơi phải học và thích nghi.\n- Thế giới thiết kế mở, nhiều địa danh ấn tượng để khám phá và chụp ảnh.\n- Bầu không khí cô đơn, huyền bí phù hợp để thưởng thức từng khoảnh khắc chiến đấu và khám phá.\n- Một số trận boss và khu vực có thể gây áp lực nhưng mang lại cảm giác đạt được mãn nguyện."
 }
