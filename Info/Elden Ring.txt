@@ -2,7 +2,7 @@
   "imagesRawBaseUrl": "https://raw.githubusercontent.com/MDat-Module/ImgHost/main/EldenRing",
   "imagesFilenamePattern": "{n}.jpg",
   "imagesStart": 1,
-  "imagesEnd": 1,
+  "imagesEnd": 4,
   "imagesNumberPadding": 3,
   "videos": [
     "https://youtu.be/x-wiH1YquSw?si=XNH01Dujv88Xazum"
