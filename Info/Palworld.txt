@@ -2,8 +2,11 @@
   "imagesRawBaseUrl": "https://raw.githubusercontent.com/MDat-Module/ImgHost/main/Palworld",
   "imagesFilenamePattern": "{n}.jpg",
   "imagesStart": 1,
-  "imagesEnd": 80,
+  "imagesEnd": 1,
   "imagesNumberPadding": 3,
+  "videos": [
+    "https://youtu.be/z92mF-XN9Qw?si=BDcgg0Nt2xgdq33O"
+  ],
   "images": [
     "001.jpg"
   ],
