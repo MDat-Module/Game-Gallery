@@ -1,0 +1,9 @@
+{
+  "imagesRawBaseUrl": "https://raw.githubusercontent.com/MDat-Module/ImgHost/main/ForzaHorizon6",
+  "imagesFilenamePattern": "{n}.jpg",
+  "imagesStart": 1,
+  "imagesEnd": 29,
+  "imagesNumberPadding": 3,
+  "summary": "Đua xe thế giới mở, thiên về phong cách tự do và lễ hội tốc độ, đồ họa đỉnh cao, trải nghiệm phấn khích.",
+  "body": "Forza Horizon 6: Tựa game đua xe thế giới mở thế hệ mới với bản đồ siêu rộng lớn, chân thực và hàng trăm siêu xe đẳng cấp.\n\nCảm nhận:\n- Trò chơi mang lại tự do tuyệt đối trong việc khám phá thế giới, từ những cung đường ven biển thơ mộng đến địa hình đồi núi hiểm trở.\n- Hệ thống thời tiết động và chu kỳ ngày đêm chân thực, tạo nên những bữa tiệc ánh sáng và âm thanh bùng nổ.\n- Cơ chế lái xe cân bằng hoàn hảo giữa mô phỏng và giải trí, đi kèm kho tàng tùy biến xe đồ sộ cho mọi tín đồ tốc độ."
+}
