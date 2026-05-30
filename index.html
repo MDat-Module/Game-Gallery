@@ -8,54 +8,58 @@
 </head>
 <body>
   <header>
-    <button id="menuBtn" class="hamburger" aria-label="Mở menu">☰</button>
+    <button id="menuBtn" class="hamburger" aria-label="&#x4F;&#x70;&#x20;&#x6D;&#x65;&#x6E;&#x75;">&#9776;</button>
     <h1>Game Gallery</h1>
   </header>
 
   <div class="container">
     <aside id="sidebar">
-      <h2>Games</h2>
-      <ul id="gameList">Đang tải...</ul>
+      <h2>Games <span id="gameCount" class="game-count"></span></h2>
+      <ul id="gameList">&#272;ang t&#7843;i...</ul>
       <div class="config">
-        <label>GitHub Token (tùy chọn):</label>
-        <input id="tokenInput" placeholder="ghp_... (chỉ khi cần tăng rate limit)">
-        <button id="applyToken">Áp dụng token</button>
+        <label>GitHub Token (t&#249;y ch&#7885;n):</label>
+        <input id="tokenInput" placeholder="ghp_... (ch&#7881; khi c&#7847;n t&#259;ng rate limit)">
+        <button id="applyToken">&#193;p d&#7909;ng token</button>
       </div>
     </aside>
 
     <main id="main">
-      <p id="siteDesc">Đây là thư viện ảnh lưu lại các kỉ niệm trong các trò chơi mà mình đã từng chơi</p>
+      <p id="siteDesc">&#272;&#226;y l&#224; th&#432; vi&#7879;n &#7843;nh l&#432;u l&#7841;i c&#225;c k&#7881; ni&#7879;m trong c&#225;c tr&#242; ch&#417;i m&#224; m&#236;nh &#273;&#227; t&#7915;ng ch&#417;i</p>
       <section id="gameGridSection">
-        <h2>Thư viện</h2>
-        <div id="gameGrid"> </div>
+        <h2>Th&#432; vi&#7879;n</h2>
+        <div id="gameGrid"></div>
       </section>
 
       <div id="infoPanel" class="hidden">
-        <button id="backBtn">← Trở về</button>
+        <button id="backBtn">&#8592; Tr&#7903; v&#7873;</button>
         <h2 id="gameTitle"></h2>
-        <pre id="gameText"></pre>
+        <div id="gameText"></div>
         <div id="videoSection">
           <h3>Video</h3>
           <div id="videoContainer"></div>
         </div>
-          <div id="thumbs1"></div>
-        <h3>Hình ảnh</h3>
+        <div id="thumbs1"></div>
+        <h3 class="gallery-heading">H&#236;nh &#7843;nh</h3>
+        <div id="galleryLoading" class="hidden">
+          <div class="spinner"></div>
+        </div>
         <div id="gallery">
           <div id="thumbs"></div>
         </div>
       </div>
 
       <div id="placeholder">
-        <p>Chọn một game bên trái để xem thông tin và ảnh.</p>
+        <p>Ch&#7885;n m&#7897;t game b&#234;n tr&#225;i &#273;&#7875; xem th&#244;ng tin v&#224; &#7843;nh.</p>
       </div>
     </main>
   </div>
 
   <div id="lightbox" class="hidden">
-    <button id="closeLightbox">✕</button>
-    <button id="prevImg">◀</button>
+    <button id="closeLightbox">&#10005;</button>
+    <button id="prevImg">&#10094;</button>
     <img id="lightboxImg" src="" alt="">
-    <button id="nextImg">▶</button>
+    <button id="nextImg">&#10095;</button>
+    <span id="imgCounter"></span>
   </div>
 
   <div id="overlay" class="hidden"></div>

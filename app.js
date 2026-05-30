@@ -41,14 +41,11 @@ function encodePath(p){
   return p.split('/').map(s=>encodeURIComponent(s)).join('/');
 }
 
-function buildImageUrl(base, gameName, filename){
+function buildImageUrl(base, _gameName, filename){
   if(!base) return `/${encodePath(filename)}`;
-  // If base contains placeholder {game}, replace it
   if(base.includes('{game}')){
-    const resolved = base;
-    return `${resolved}/${encodePath(filename)}`;
+    return `${base}/${encodePath(filename)}`;
   }
-  // Do NOT auto-append the game folder. Simply return base + filename.
   return `${base.replace(/\/$/,'')}/${encodePath(filename)}`;
 }
 
@@ -117,8 +114,9 @@ async function loadGameList(){
         games.push({ name, txtUrl });
       });
       // render game grid (thumbnails)
+      const countEl = document.getElementById('gameCount');
+      if(countEl) countEl.textContent = games.length;
       renderGameGrid(games);
-      // if URL contains a game hash, open it after rendering
       try{ checkHashToOpen(); }catch(e){}
       return;
     }catch(err){
@@ -140,10 +138,10 @@ async function loadGameList(){
     li.textContent = name;
     li.onclick = ()=>openGame(name, file.download_url);
     listEl.appendChild(li);
-    // collect games for grid
     games.push({ name, txtUrl: file.download_url });
   });
-  // render game grid (thumbnails)
+  const countEl = document.getElementById('gameCount');
+  if(countEl) countEl.textContent = games.length;
   renderGameGrid(games);
   try{ checkHashToOpen(); }catch(e){}
 }
@@ -156,6 +154,9 @@ async function openGame(name, txtUrl){
   document.getElementById('placeholder').style.display='none';
   document.getElementById('infoPanel').classList.remove('hidden');
   document.getElementById('gameTitle').textContent = name;
+  document.querySelectorAll('#gameList li').forEach(li=>{
+    li.classList.toggle('active', li.textContent === name);
+  });
   try{
     let text;
     if(config && config.localInfo){
@@ -233,10 +234,27 @@ function youtubeEmbedUrl(u){
   return null;
 }
 
+function appendThumbsSequentially(urls, container){
+  container.innerHTML = '';
+  const galleryLoading = document.getElementById('galleryLoading');
+  if(galleryLoading) galleryLoading.classList.add('hidden');
+  urls.forEach((u, idx)=>{
+    const im = document.createElement('img');
+    im.className = 'thumb thumb-reveal';
+    im.style.setProperty('--i', idx);
+    im.loading = 'lazy';
+    im.alt = '';
+    im.onclick = ()=>openLightbox(urls, idx);
+    setTimeout(()=>{ im.src = u; }, idx * 80);
+    container.appendChild(im);
+  });
+}
+
 async function loadGallery(gameName, text){
   const thumbs = document.getElementById('thumbs');
-  const thumbs1 = document.getElementById('thumbs1');
-  thumbs.innerHTML = 'Đang tải ảnh...'; 
+  const galleryLoading = document.getElementById('galleryLoading');
+  thumbs.innerHTML = '';
+  if(galleryLoading) galleryLoading.classList.remove('hidden');
   let meta = JSON.parse(text);
   const videoContainer = document.getElementById('videoContainer');
   if(videoContainer) videoContainer.innerHTML = '';
@@ -289,9 +307,7 @@ async function loadGallery(gameName, text){
     const pad = Number(meta.imagesNumberPadding || meta.numberPadding || config.imagesNumberPadding || 0);
     const urls = [];
     for(let i=start;i<=end;i++){ let n=String(i); if(pad>0) n=n.padStart(pad,'0'); let fname = meta.imagesFilenamePattern.replace(/\{game\}/g, gameName).replace(/\{n\}/g,n); urls.push(buildImageUrl(meta.imagesRawBaseUrl, gameName, fname)); }
-    thumbs.innerHTML = '';
-    urls.forEach((u, idx)=>{ const im=document.createElement('img'); im.src=u; im.className='thumb'; im.loading='lazy'; im.onclick=()=>openLightbox(urls, idx); thumbs.appendChild(im); });
-    
+    appendThumbsSequentially(urls, thumbs);
     return;
   }
 
@@ -303,7 +319,7 @@ async function loadGallery(gameName, text){
       if(!r.ok) throw new Error('Không thể tải index ảnh');
       const index = await r.json();
       const list = index[gameName] || index[encodeURIComponent(gameName)] || index[gameName.replace(/%20/g,' ')];
-      if(!Array.isArray(list) || list.length===0){ thumbs.innerHTML = 'Không có ảnh trong index cho game này.'; return; }
+      if(!Array.isArray(list) || list.length===0){ if(galleryLoading) galleryLoading.classList.add('hidden'); thumbs.innerHTML = 'Không có ảnh trong index cho game này.'; return; }
       const urls = list.map(x => {
         if(typeof x !== 'string') return null;
         if(/^https?:\/\//i.test(x)) return x;
@@ -311,10 +327,9 @@ async function loadGallery(gameName, text){
         if(base) return buildImageUrl(base, gameName, x);
         return x;
       }).filter(Boolean);
-      thumbs.innerHTML = '';
-      urls.forEach((u, idx)=>{ const im=document.createElement('img'); im.src=u; im.className='thumb'; im.loading='lazy'; im.onclick=()=>openLightbox(urls, idx); thumbs.appendChild(im); });
+      appendThumbsSequentially(urls, thumbs);
       return;
-    }catch(err){ thumbs.innerHTML = 'Không thể tải index ảnh.'; return; }
+    }catch(err){ if(galleryLoading) galleryLoading.classList.add('hidden'); thumbs.innerHTML = 'Không thể tải index ảnh.'; return; }
   }
   // Mode 2: global raw base + pattern
   if(config && config.imagesRawBaseUrl && config.imagesFilenamePattern){
@@ -323,20 +338,18 @@ async function loadGallery(gameName, text){
     const pad = Number(config.imagesNumberPadding || 0);
     const urls = [];
     for(let i=start;i<=end;i++){ let n=String(i); if(pad>0) n=n.padStart(pad,'0'); let fname = config.imagesFilenamePattern.replace(/\{game\}/g, gameName).replace(/\{n\}/g,n); urls.push(buildImageUrl(config.imagesRawBaseUrl, gameName, fname)); }
-    thumbs.innerHTML = '';
-    urls.forEach((u, idx)=>{ const im=document.createElement('img'); im.src=u; im.className='thumb'; im.loading='lazy'; im.onclick=()=>openLightbox(urls, idx); thumbs.appendChild(im); });
+    appendThumbsSequentially(urls, thumbs);
     return;
   }
 
   // Mode 3: fallback to GitHub API listing (original behavior)
   const path = `${config.imagesFolderPrefix || ''}/${gameName}`.replace(/^\/+/, '');
   const items = await fetchContents(config.imagesRepoOwner, config.imagesRepoName, path, config.imagesRepoBranch);
-  if(!items){ thumbs.innerHTML = 'Không tìm thấy thư mục ảnh cho game này.'; return; }
+  if(!items){ if(galleryLoading) galleryLoading.classList.add('hidden'); thumbs.innerHTML = 'Không tìm thấy thư mục ảnh cho game này.'; return; }
   const images = items.filter(i=>i.type==='file' && /\.(png|jpe?g|gif|webp|bmp)$/i.test(i.name));
-  if(images.length===0){ thumbs.innerHTML = 'Không có ảnh trong thư mục này.'; return; }
-  thumbs.innerHTML = '';
+  if(images.length===0){ if(galleryLoading) galleryLoading.classList.add('hidden'); thumbs.innerHTML = 'Không có ảnh trong thư mục này.'; return; }
   const urls = images.map(i=>i.download_url);
-  images.forEach((img, idx)=>{ const im=document.createElement('img'); im.src = img.download_url; im.className='thumb'; im.loading='lazy'; im.onclick = ()=>openLightbox(urls, idx); thumbs.appendChild(im); });
+  appendThumbsSequentially(urls, thumbs);
 }
 
 // Resolve a single thumbnail URL for a game (first available image)
@@ -433,13 +446,17 @@ async function renderGameGrid(gamesList){
     const card = document.createElement('div'); card.className = 'game-card';
     card.dataset.name = g.name;
     card.dataset.txturl = g.txtUrl;
+    const wrap = document.createElement('div'); wrap.className = 'game-thumb-wrap';
     const img = document.createElement('img'); img.className = 'game-thumb'; img.alt = g.name; img.src = '';
+    wrap.appendChild(img);
+    const body = document.createElement('div'); body.className = 'game-card-body';
     const title = document.createElement('div'); title.className = 'game-title'; title.textContent = g.name;
     const summ = document.createElement('div'); summ.className = 'game-summary'; summ.textContent = '';
-    card.appendChild(img); card.appendChild(title); card.appendChild(summ);
+    body.appendChild(title); body.appendChild(summ);
+    card.appendChild(wrap); card.appendChild(body);
     card.onclick = ()=> openGame(g.name, g.txtUrl);
     grid.appendChild(card);
-    if(observer) observer.observe(card); else loadCardData(g, card); // fallback: load immediately
+    if(observer) observer.observe(card); else loadCardData(g, card);
   });
 }
 
@@ -452,8 +469,6 @@ async function loadCardData(g, card){
       return;
     }
     const imgEl = card.querySelector('.game-thumb');
-    const sumEl = card.querySelector('.game-summary');
-    // show subtle loading background
     imgEl.style.background = 'linear-gradient(90deg, #071024 0%, #0b1220 50%, #071024 100%)';
     const thumb = await getThumbnailForGame(g.name, g.txtUrl);
     thumbCache.set(g.name, thumb);
@@ -465,10 +480,12 @@ async function loadCardData(g, card){
 
 function applyThumbToCard(thumb, card){
   const imgEl = card.querySelector('.game-thumb');
-  const sumEl = card.querySelector('.game-summary');
   if(thumb && thumb.url) { imgEl.src = thumb.url; imgEl.style.background = ''; }
   else { imgEl.style.background = '#071024'; }
-  if(thumb && thumb.summary){ sumEl.textContent = thumb.summary; sumEl.title = thumb.summary; }
+  if(thumb && thumb.summary){
+    const sumEl = card.querySelector('.game-summary');
+    if(sumEl){ sumEl.textContent = thumb.summary; sumEl.title = thumb.summary; }
+  }
 }
 
 // If the URL contains a hash like #game=NAME, open that game (used for deep-linking)
@@ -486,23 +503,41 @@ function checkHashToOpen(){
 }
 
 let currentLightbox = { urls: [], idx: 0 };
+
+function updateLightboxCounter(){
+  const el = document.getElementById('imgCounter');
+  if(el) el.textContent = `${currentLightbox.idx + 1} / ${currentLightbox.urls.length}`;
+}
+
+function setLightboxImage(src){
+  const img = document.getElementById('lightboxImg');
+  img.classList.add('fading');
+  setTimeout(()=>{
+    img.src = src;
+    img.classList.remove('fading');
+  }, 120);
+}
+
 function openLightbox(urls, idx){
   currentLightbox.urls = urls; currentLightbox.idx = idx;
   const lb = document.getElementById('lightbox');
   const img = document.getElementById('lightboxImg');
   img.src = urls[idx];
   lb.classList.remove('hidden');
+  updateLightboxCounter();
 }
 function closeLightbox(){ document.getElementById('lightbox').classList.add('hidden'); }
 function prevImage(){
   if(!currentLightbox.urls.length) return;
-  currentLightbox.idx = (currentLightbox.idx-1 + currentLightbox.urls.length) % currentLightbox.urls.length;
-  document.getElementById('lightboxImg').src = currentLightbox.urls[currentLightbox.idx];
+  currentLightbox.idx = (currentLightbox.idx - 1 + currentLightbox.urls.length) % currentLightbox.urls.length;
+  setLightboxImage(currentLightbox.urls[currentLightbox.idx]);
+  updateLightboxCounter();
 }
 function nextImage(){
   if(!currentLightbox.urls.length) return;
-  currentLightbox.idx = (currentLightbox.idx+1) % currentLightbox.urls.length;
-  document.getElementById('lightboxImg').src = currentLightbox.urls[currentLightbox.idx];
+  currentLightbox.idx = (currentLightbox.idx + 1) % currentLightbox.urls.length;
+  setLightboxImage(currentLightbox.urls[currentLightbox.idx]);
+  updateLightboxCounter();
 }
 
 function wireUI(){
