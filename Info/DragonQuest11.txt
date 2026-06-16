@@ -1,0 +1,9 @@
+{
+  "imagesRawBaseUrl": "https://raw.githubusercontent.com/MDat-Module/ImgHost/main/DQ11",
+  "imagesFilenamePattern": "{n}.jpg",
+  "imagesStart": 1,
+  "imagesEnd": 50,
+  "imagesNumberPadding": 3,
+  "summary": "Tuyệt tác JRPG hiện đại kết hợp hoàn hảo giữa giá trị truyền thống và đồ họa Unreal Engine 4 đỉnh cao, xứng danh huyền thoại thế hệ mới.",
+  "body": "Dragon Quest XI: Echoes of an Elusive Age - Một thiên sử thi trọn vẹn, viết tiếp khúc ca anh hùng đầy cảm xúc của dòng game nhập vai huyền thoại.\n\nCảm nhận:\n- Tuyệt mỹ và Sống động: Thế giới Erdrea hiện lên vô cùng lộng lẫy qua đồ họa Unreal Engine 4. Nét vẽ đặc trưng của cố họa sĩ Akira Toriyama được thổi hồn sống động từ những đại thảo nguyên bao la đến các vương quốc nguy nga.\n- Kịch tính và Đột phá: Giữ vững linh hồn của hệ thống chiến đấu theo lượt truyền thống, kết hợp cùng cơ chế Pep Power (Liên kích) mãn nhãn và tính năng Draconian Quest, mang đến thử thách đỉnh cao cho các game thủ kỳ cựu.\n- Khúc ca Định mệnh: Cốt truyện sâu sắc về vị Tà thần và Đấng cứu thế với những cú bẻ lái (twist) không tưởng. Hành trình thắt chặt tình đồng đội cùng dàn nhân vật cá tính như Erik, Sylvando hay Veronica sẽ để lại dư âm nghẹn ngào khó quên."
+}
