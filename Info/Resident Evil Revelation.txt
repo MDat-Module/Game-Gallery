@@ -1,0 +1,9 @@
+{
+  "imagesRawBaseUrl": "https://raw.githubusercontent.com/MDat-Module/ImgHost/main/RERevelation",
+  "imagesFilenamePattern": "{n}.jpg",
+  "imagesStart": 1,
+  "imagesEnd": 46,
+  "imagesNumberPadding": 3,
+  "summary": "Siêu phẩm kinh dị sinh tồn đưa Resident Evil trở lại với bầu không khí ngột ngạt, u tối và đầy kịch tính trên con tàu ma Queen Zenobia.",
+  "body":"Resident Evil Revelations - Hành trình nghẹt thở trả lại bản sắc kinh dị sinh tồn nguyên bản cho thương hiệu huyền thoại.\n\nCảm nhận:\n- Bầu không khí ngột ngạt: Bối cảnh con tàu ma Queen Zenobia giữa biển khơi lạnh giá mang lại cảm giác cô lập, chật hẹp và rợn tóc gáy, tái hiện hoàn hảo chất kinh dị truyền thống.\n- Gameplay cân bằng tuyệt vời: Sự kết hợp hoàn hảo giữa yếu tố giải đố, quản lý tài nguyên hạn hẹp và cơ chế bắn súng góc nhìn thứ ba hiện đại, kết hợp cùng thiết bị Genesis mang đến lối chơi dò tìm đầy thú vị.\n- Cốt truyện kịch tính & Âm thanh sống động: Kịch bản phân đoạn như một bộ phim truyền hình dài tập với nhiều cú twist bất ngờ, đi kèm phần âm thanh u ám, dồn dập làm tăng tối đa sự căng thẳng trong từng góc tối."
+}
