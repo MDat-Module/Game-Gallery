@@ -1,0 +1,9 @@
+{
+"imagesRawBaseUrl": "https://raw.githubusercontent.com/MDat-Module/ImgHost/main/TailsOfIron",
+"imagesFilenamePattern": "{n}.jpg",
+"imagesStart": 1,
+"imagesEnd": 26,
+"imagesNumberPadding": 3,
+"summary": "Kiệt tác RPG hành động vẽ tay đưa người chơi vào trận chiến tàn khốc của Chuột vương Redgi để khôi phục vương quốc bị tàn phá.",
+"body": "Tails of Iron - Khúc sử thi tăm tối và đẫm máu về lòng quả cảm của vị vua trẻ trên hành trình phục quốc.\n\nCảm nhận:\n- Đồ họa vẽ tay ấn tượng: Phong cách nghệ thuật 2D độc đáo với tông màu u tối, tả thực sự tàn khốc của chiến tranh nhưng vẫn toát lên vẻ cuốn hút và chỉn chu trong từng khung hình.\n- Chiến đấu Souls-like thử thách: Hệ thống chiến đấu nhịp độ cao, nặng tính chiến thuật với các cơ chế đỡ đòn (parry), né tránh và đọc hướng tấn công khắt khe, đòi hỏi sự chính xác tuyệt đối trong từng trận đấu trùm.\n- Dẫn chuyện lôi cuốn: Giọng đọc truyền cảm đầy uy lực của Doug Cockle (diễn viên lồng tiếng cho Geralt trong The Witcher) kết hợp với âm thanh sinh động, thổi hồn vào câu chuyện trả thù đầy cảm xúc của loài chuột."
+}
