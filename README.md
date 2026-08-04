@@ -1,5 +1,5 @@
 # Game Gallery (Static)
-
+https://mdat-module.github.io/Game-Gallery/
 Trang tĩnh để hiển thị danh sách các game (đọc file .txt trong thư mục `Info`) và gallery ảnh lấy từ một repo ảnh riêng.
 
 Hướng dẫn nhanh:
