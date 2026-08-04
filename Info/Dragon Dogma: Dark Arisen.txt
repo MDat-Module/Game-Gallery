@@ -1,0 +1,9 @@
+{
+  "imagesRawBaseUrl": "https://raw.githubusercontent.com/MDat-Module/ImgHost/main/DDDA",
+  "imagesFilenamePattern": "{n}.jpg",
+  "imagesStart": 1,
+  "imagesEnd": 70,
+  "imagesNumberPadding": 3,
+  "summary": "Tuyệt phẩm hành động nhập vai đỉnh cao với cơ chế chiến đấu tự do, hệ thống Pawn độc đáo và bầu không khí viễn tưởng tăm tối đầy cuốn hút.",
+  "body": "Dragon's Dogma: Dark Arisen - Khúc tráng ca kịch tính về vương quốc Gransys, nơi lòng quả cảm của Arisen đối đầu với định mệnh hủy diệt từ Rồng thiêng.\n\nCảm nhận:\n- Mãn nhãn và Đột phá: Hệ thống chiến đấu tự do cực kỳ ấn tượng, cho phép bạn trèo lên các con trùm khổng lồ, khai thác điểm yếu và kết hợp kỹ năng nguyên tố đa dạng để tạo nên những trận đánh ngạt thở.\n- Sáng tạo và Đồng hành: Cơ chế Pawn (Trợ thủ) độc nhất vô nhị cho phép bạn tạo ra người đồng hành trung thành, học hỏi kỹ năng và chia sẻ trải nghiệm chiến đấu với cộng đồng người chơi trên toàn thế giới.\n- Thử thách và U tối: Bản mở rộng Dark Arisen đưa bạn đến hòn đảo cô độc Bitterblack Isle – nơi ẩn chứa những cạm bẫy tàn khốc, vô số quái vật ác mộng và phần thưởng huyền thoại dành cho những tay chơi bản lĩnh nhất."
+}
