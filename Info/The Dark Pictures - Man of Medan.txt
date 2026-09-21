@@ -2,7 +2,7 @@
 "imagesRawBaseUrl": "https://raw.githubusercontent.com/MDat-Module/ImgHost/main/Man of Medan",
 "imagesFilenamePattern": "{n}.jpg",
 "imagesStart": 1,
-"imagesEnd": 70,
+"imagesEnd": 67,
 "imagesNumberPadding": 3,
 "summary": "Tựa game kinh dị sinh tồn tương tác nghẹt thở, đưa bạn vào hành trình khám phá con tàu ma u ám với hàng loạt lựa chọn định đoạt sống chết của cả nhóm.",
 "body": "The Dark Pictures Anthology: Man of Medan - Cơn ác mộng giữa đại dương bao la, nơi chuyến lặn biển săn tàu đắm biến thành cuộc chiến sinh tồn tàn khốc trên con tàu ma bị nguyền rủa.\n\nCảm nhận:\n- Căng thẳng và Áp lực: Bầu không khí u uất, chật hẹp của con tàu hoang cùng những tình huống giật gân (jump-scare) liên tục đặt người chơi vào trạng thái hồi hộp đến nghẹt thở.\n- Lựa chọn và Hệ quả: Mỗi quyết định nhỏ, từng phản ứng nhanh (QTE) hay sự lựa chọn giữa con tim và lý trí đều trực tiếp ảnh hưởng đến số phận của từng nhân vật, dẫn đến hàng loạt kết cục khác nhau.\n- Gắn kết và Trải nghiệm: Hỗ trợ chế độ chơi đơn lẫn chơi mạng hợp tác (Co-op) độc đáo, cho phép bạn cùng bạn bè chia sẻ nỗi sợ hãi và gánh chịu hậu quả từ những quyết định chung."
