@@ -1,5 +1,5 @@
 {
-"imagesRawBaseUrl": "https://raw.githubusercontent.com/MDat-Module/ImgHost/main/TDPMOM",
+"imagesRawBaseUrl": "https://raw.githubusercontent.com/MDat-Module/ImgHost/main/Man of Medan",
 "imagesFilenamePattern": "{n}.jpg",
 "imagesStart": 1,
 "imagesEnd": 70,
