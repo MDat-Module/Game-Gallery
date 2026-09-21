@@ -1,5 +1,5 @@
 {
-"imagesRawBaseUrl": "[https://raw.githubusercontent.com/MDat-Module/ImgHost/main/XCDE](https://www.google.com/search?q=https://raw.githubusercontent.com/MDat-Module/ImgHost/main/XCDE&utm_source=gemini)",
+"imagesRawBaseUrl": "https://raw.githubusercontent.com/MDat-Module/ImgHost/main/XenoBladeChronicle1",
 "imagesFilenamePattern": "{n}.jpg",
 "imagesStart": 1,
 "imagesEnd": 70,
