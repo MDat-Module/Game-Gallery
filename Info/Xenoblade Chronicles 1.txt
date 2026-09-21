@@ -2,7 +2,7 @@
 "imagesRawBaseUrl": "https://raw.githubusercontent.com/MDat-Module/ImgHost/main/XenoBladeChronicle1",
 "imagesFilenamePattern": "{n}.jpg",
 "imagesStart": 1,
-"imagesEnd": 70,
+"imagesEnd": 198,
 "imagesNumberPadding": 3,
 "summary": "Tuyệt phẩm JRPG kinh điển với thế giới mở hùng vĩ trên thân thể hai vị thần cổ đại, cốt truyện sử thi cuốn hút và hệ thống chiến đấu thời gian thực đầy chiều sâu.",
 "body": "Xenoblade Chronicles: Definitive Edition - Hành trình trả thù và khai phá định mệnh của Shulk cùng thanh gươm thần Monado trên thế giới Bionis và Mechonis.\n\nCảm nhận:\n- Hùng vĩ và Choáng ngợp: Thế giới mở rộng lớn vô tận được dựng trên cơ thể của hai vị thần khổng lồ, kết hợp cùng hiệu ứng hình ảnh nâng cấp và bản phối nhạc nền tuyệt đỉnh mang lại trải nghiệm thị giác lẫn thính giác trọn vẹn.\n- Chiến thuật và Đột phá: Hệ thống chiến đấu thời gian thực kết hợp giữa di chuyển vị trí, sử dụng kỹ năng (Arts) và cơ chế "Nhìn thấy tương lai" của Monado để xoay chuyển cục diện những trận đấu trùm căng thẳng.\n- Cảm xúc và Trọn vẹn: Cốt truyện sâu sắc chứa đựng nhiều bước ngoặt bất ngờ, đi kèm phần chơi mở rộng Future Connected mang đến cái kết trọn vẹn và hoàn chỉnh nhất cho hành trình của Shulk."
